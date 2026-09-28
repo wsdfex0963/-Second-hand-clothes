@@ -16,7 +16,7 @@ Live 版本：https://claude.ai/artifact/Lvz7zeep5TGeoodQnDnHiv
                  └─ 合成 900×900 方圖（背景色 + 陰影）→ WebP（不支援就用 JPEG）
              ─► 草稿 (draft，只有賣家這個分頁看得到)
              ─► 發布：整頁 HTML（CSS + JS + JSON 資料）重新產生 ─► 新版本上線
-買家瀏覽 ─► 加入詢問清單 (存在買家自己的瀏覽器) ─► 產生 LINE 訊息 ─► 私訊 wsdfex
+買家瀏覽 ─► 加入詢問清單 (存在買家自己的瀏覽器) ─► 選交易方式／雙北捷運站 ─► 產生 LINE 訊息 ─► 私訊 wsdfex
 ```
 
 ## 資料模型（`<script id="shop-data">` 裡的 JSON）

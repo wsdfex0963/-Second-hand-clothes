@@ -124,12 +124,19 @@ h1,h2,h3{text-wrap:balance}
 .stop:last-child::before{right:50%}
 .stop .dot{position:relative;width:20px;height:20px;border-radius:50%;background:var(--surface);border:4px solid var(--wenhu)}
 .stop.tr .dot{border-width:3px;box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--ink-3)}
-.stop .nm{writing-mode:vertical-rl;white-space:nowrap;font-size:13px;letter-spacing:.12em;line-height:1}
+.stop .nm{display:block;width:1.05em;font-size:13px;line-height:1.2;text-align:center;word-break:break-all;overflow-wrap:anywhere}
 .stop:hover .nm,.stop.on .nm{color:var(--ink);font-weight:700}
 .stop.on .dot{background:var(--wenhu)}
 .metro-legend{display:flex;gap:14px;font-size:12px;color:var(--ink-3);padding:4px 18px 0}
 .metro-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--wenhu);margin-right:4px;vertical-align:-1px}
 .metro-legend i.tr{box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--ink-3)}
+.metro-sub{display:flex;align-items:center;gap:8px;margin:14px 18px 0;font-size:14px;font-weight:500}
+.east{display:flex;flex-wrap:wrap;gap:6px;padding:10px 18px 6px}
+.echip{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--ink)}
+.echip small{font-size:11px;color:var(--ink-3)}
+.echip:hover{border-color:var(--ink-3)}
+.echip.on{background:var(--wenhu);border-color:var(--wenhu);color:var(--on-wenhu)}
+.echip.on small{color:var(--on-wenhu)}
 
 footer.foot{border-top:1px solid var(--line);margin-top:40px;padding-block:20px 90px;color:var(--ink-3);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
 .linkish{border:0;background:none;color:var(--ink-3);text-decoration:underline;padding:0;font-size:13px}
@@ -262,7 +269,7 @@ footer.foot{border-top:1px solid var(--line);margin-top:40px;padding-block:20px 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 <div id="app"></div>
-<script type="application/json" id="shop-data">{"schema":1,"shop":{"name":"文湖線衣櫥","tagline":"一件一件實拍、去背整理好的二手衣。看到喜歡的，加 LINE 私訊我。","lineId":"wsdfex","shipNote":"確認商品後轉帳，收到款項 1–2 天內寄出；運費依寄送方式另計，私訊報價。","meetNote":"文湖線各站優先，台北市捷運站都可以約；現場看過衣服再付款。","payNote":"匯款帳號會在 LINE 私訊提供，轉帳後請告訴我帳號末五碼。"},"seq":5,"publishedAt":"2026-09-27T21:00:00+08:00","items":[{"id":"A001","title":"米杏色 V 領麻花針織開襟外套","cat":"外套","size":"M","brand":"無品牌","material":"壓克力纖維 70%、羊毛 30%","cond":"九成新","price":380,"orig":990,"measures":{"肩寬":"44","胸寬":"52","衣長":"62","袖長":"56"},"note":"袖口有一點點起毛球，整體狀況很好，無污漬。","status":"available","photos":["svg:cardigan"],"sample":true,"createdAt":"2026-09-26T20:10:00+08:00","updatedAt":"2026-09-26T20:10:00+08:00"},{"id":"A002","title":"深藍高腰直筒牛仔褲","cat":"褲子","size":"S","brand":"無品牌","material":"棉 98%、彈性纖維 2%","cond":"近全新","price":450,"orig":1290,"measures":{"腰寬":"34","臀寬":"46","褲長":"98","褲管寬":"19"},"note":"只穿過兩次，褲長適合 160–165 cm。","status":"reserved","photos":["svg:jeans"],"sample":true,"createdAt":"2026-09-25T21:30:00+08:00","updatedAt":"2026-09-27T09:00:00+08:00"},{"id":"A003","title":"鼠尾草綠百褶中長裙","cat":"裙子","size":"F","brand":"無品牌","material":"聚酯纖維","cond":"九成新","price":320,"orig":0,"measures":{"腰寬":"32","裙長":"78"},"note":"後腰鬆緊，腰寬可拉到 40 cm。","status":"available","photos":["svg:skirt"],"sample":true,"createdAt":"2026-09-24T19:00:00+08:00","updatedAt":"2026-09-24T19:00:00+08:00"},{"id":"A004","title":"海軍藍條紋短袖 T 恤","cat":"上衣","size":"L","brand":"無品牌","material":"純棉","cond":"八成新","price":200,"orig":0,"measures":{"肩寬":"46","胸寬":"54","衣長":"68","袖長":"20"},"note":"","status":"sold","photos":["svg:tee"],"sample":true,"createdAt":"2026-09-20T18:00:00+08:00","updatedAt":"2026-09-23T12:00:00+08:00","soldAt":"2026-09-23T12:00:00+08:00"}],"log":[{"at":"2026-09-27T21:00:00+08:00","action":"開店","id":"-","detail":"建立網站，含 4 件範例商品（上架真的衣服後可一鍵清除）"}]}</script>
+<script type="application/json" id="shop-data">{"schema":1,"shop":{"name":"文湖線衣櫥","tagline":"一件一件實拍、去背整理好的二手衣。看到喜歡的，加 LINE 私訊我。","lineId":"wsdfex","shipNote":"確認商品後轉帳，收到款項 1–2 天內寄出；運費依寄送方式另計，私訊報價。","meetNote":"文湖線、東區（忠孝／信義一帶）各站優先，雙北捷運站都可以約；現場看過衣服再付款。","payNote":"匯款帳號會在 LINE 私訊提供，轉帳後請告訴我帳號末五碼。"},"seq":5,"publishedAt":"2026-09-27T21:00:00+08:00","items":[{"id":"A001","title":"米杏色 V 領麻花針織開襟外套","cat":"外套","size":"M","brand":"無品牌","material":"壓克力纖維 70%、羊毛 30%","cond":"九成新","price":380,"orig":990,"measures":{"肩寬":"44","胸寬":"52","衣長":"62","袖長":"56"},"note":"袖口有一點點起毛球，整體狀況很好，無污漬。","status":"available","photos":["svg:cardigan"],"sample":true,"createdAt":"2026-09-26T20:10:00+08:00","updatedAt":"2026-09-26T20:10:00+08:00"},{"id":"A002","title":"深藍高腰直筒牛仔褲","cat":"褲子","size":"S","brand":"無品牌","material":"棉 98%、彈性纖維 2%","cond":"近全新","price":450,"orig":1290,"measures":{"腰寬":"34","臀寬":"46","褲長":"98","褲管寬":"19"},"note":"只穿過兩次，褲長適合 160–165 cm。","status":"reserved","photos":["svg:jeans"],"sample":true,"createdAt":"2026-09-25T21:30:00+08:00","updatedAt":"2026-09-27T09:00:00+08:00"},{"id":"A003","title":"鼠尾草綠百褶中長裙","cat":"裙子","size":"F","brand":"無品牌","material":"聚酯纖維","cond":"九成新","price":320,"orig":0,"measures":{"腰寬":"32","裙長":"78"},"note":"後腰鬆緊，腰寬可拉到 40 cm。","status":"available","photos":["svg:skirt"],"sample":true,"createdAt":"2026-09-24T19:00:00+08:00","updatedAt":"2026-09-24T19:00:00+08:00"},{"id":"A004","title":"海軍藍條紋短袖 T 恤","cat":"上衣","size":"L","brand":"無品牌","material":"純棉","cond":"八成新","price":200,"orig":0,"measures":{"肩寬":"46","胸寬":"54","衣長":"68","袖長":"20"},"note":"","status":"sold","photos":["svg:tee"],"sample":true,"createdAt":"2026-09-20T18:00:00+08:00","updatedAt":"2026-09-23T12:00:00+08:00","soldAt":"2026-09-23T12:00:00+08:00"}],"log":[{"at":"2026-09-27T21:00:00+08:00","action":"開店","id":"-","detail":"建立網站，含 4 件範例商品（上架真的衣服後可一鍵清除）"}]}</script>
 <script id="shop-js">
 (function () {
 'use strict';
@@ -285,11 +292,14 @@ var STATUS = {
 };
 var LINES = [
   { name: '文湖線', st: ['動物園', '木柵', '萬芳社區', '萬芳醫院', '辛亥', '麟光', '六張犁', '科技大樓', '大安', '忠孝復興', '南京復興', '中山國中', '松山機場', '大直', '劍南路', '西湖', '港墘', '文德', '內湖', '大湖公園', '葫洲', '東湖', '南港軟體園區', '南港展覽館'] },
-  { name: '淡水信義線', st: ['關渡', '忠義', '復興崗', '北投', '新北投', '奇岩', '唭哩岸', '石牌', '明德', '芝山', '士林', '劍潭', '圓山', '民權西路', '雙連', '中山', '台北車站', '台大醫院', '中正紀念堂', '東門', '大安森林公園', '大安', '信義安和', '台北101/世貿', '象山'] },
-  { name: '松山新店線', st: ['松山', '南京三民', '台北小巨蛋', '南京復興', '松江南京', '中山', '北門', '西門', '小南門', '中正紀念堂', '古亭', '台電大樓', '公館', '萬隆', '景美'] },
-  { name: '中和新蘆線', st: ['大橋頭', '民權西路', '中山國小', '行天宮', '松江南京', '忠孝新生', '東門', '古亭'] },
-  { name: '板南線', st: ['龍山寺', '西門', '台北車站', '善導寺', '忠孝新生', '忠孝復興', '忠孝敦化', '國父紀念館', '市政府', '永春', '後山埤', '昆陽', '南港', '南港展覽館'] }
+  { name: '淡水信義線', st: ['淡水', '紅樹林', '竹圍', '關渡', '忠義', '復興崗', '北投', '新北投', '奇岩', '唭哩岸', '石牌', '明德', '芝山', '士林', '劍潭', '圓山', '民權西路', '雙連', '中山', '台北車站', '台大醫院', '中正紀念堂', '東門', '大安森林公園', '大安', '信義安和', '台北101/世貿', '象山'] },
+  { name: '松山新店線', st: ['松山', '南京三民', '台北小巨蛋', '南京復興', '松江南京', '中山', '北門', '西門', '小南門', '中正紀念堂', '古亭', '台電大樓', '公館', '萬隆', '景美', '大坪林', '七張', '小碧潭', '新店區公所', '新店'] },
+  { name: '中和新蘆線', st: ['南勢角', '景安', '永安市場', '頂溪', '古亭', '東門', '忠孝新生', '松江南京', '行天宮', '中山國小', '民權西路', '大橋頭', '台北橋', '菜寮', '三重', '先嗇宮', '頭前庄', '新莊', '輔大', '丹鳳', '迴龍', '三重國小', '三和國中', '徐匯中學', '三民高中', '蘆洲'] },
+  { name: '板南線', st: ['頂埔', '永寧', '土城', '海山', '亞東醫院', '府中', '板橋', '新埔', '江子翠', '龍山寺', '西門', '台北車站', '善導寺', '忠孝新生', '忠孝復興', '忠孝敦化', '國父紀念館', '市政府', '永春', '後山埤', '昆陽', '南港', '南港展覽館'] },
+  { name: '環狀線', st: ['大坪林', '十四張', '秀朗橋', '景平', '景安', '中和', '橋和', '中原', '板新', '板橋', '新埔民生', '頭前庄', '幸福', '新北產業園區'] }
 ];
+// priority meet-up area besides the Wenhu line: Taipei's east district (Zhongxiao / Xinyi)
+var EAST = [['板南線', '忠孝復興'], ['板南線', '忠孝敦化'], ['板南線', '國父紀念館'], ['板南線', '市政府'], ['板南線', '永春'], ['淡水信義線', '信義安和'], ['淡水信義線', '台北101/世貿'], ['淡水信義線', '象山']];
 var BGS = [
   { id: 'studio', label: '攝影棚', sw: 'radial-gradient(circle,#fff,#DCE0D9)' },
   { id: 'white', label: '純白', sw: '#FFFFFF' },
@@ -428,16 +438,25 @@ function renderGrid() {
 }
 
 function stationOptions(selected) {
-  var h = '<option value="">選一個捷運站</option>';
-  LINES.forEach(function (l, i) {
-    h += '<optgroup label="' + l.name + (i === 0 ? '（優先）' : '') + '">';
-    l.st.forEach(function (s) {
-      var v = l.name + ' ' + s + '站';
-      h += '<option value="' + esc(v) + '"' + (v === selected ? ' selected' : '') + '>' + esc(s) + '</option>';
-    });
-    h += '</optgroup>';
+  var h = '<option value="">選一個捷運站</option>', done = false;
+  function opt(line, name) {
+    var v = line + ' ' + name + '站', sel = !done && v === selected;
+    if (sel) done = true;
+    return '<option value="' + esc(v) + '"' + (sel ? ' selected' : '') + '>' + esc(name) + '</option>';
+  }
+  h += '<optgroup label="優先：文湖線">' + LINES[0].st.map(function (s) { return opt(LINES[0].name, s); }).join('') + '</optgroup>';
+  h += '<optgroup label="優先：東區（忠孝／信義）">' + EAST.map(function (e) { return opt(e[0], e[1]); }).join('') + '</optgroup>';
+  LINES.slice(1).forEach(function (l) {
+    h += '<optgroup label="' + l.name + '">' + l.st.map(function (s) { return opt(l.name, s); }).join('') + '</optgroup>';
   });
   return h;
+}
+
+function eastHtml() {
+  return EAST.map(function (e) {
+    var v = e[0] + ' ' + e[1] + '站', on = pref.station === v;
+    return '<button class="echip' + (on ? ' on' : '') + '" data-act="station" data-v="' + esc(v) + '" aria-pressed="' + on + '">' + esc(e[1]) + '<small>' + esc(e[0]) + '</small></button>';
+  }).join('');
 }
 
 function stripHtml() {
@@ -465,7 +484,7 @@ function renderPublic() {
     '<header class="wrap top"><div class="brand">' +
     '<div class="eyebrow"><span class="badge-br">BR</span>二手衣・實拍去背・捷運面交</div>' +
     '<h1>' + esc(shop.name) + '</h1><p class="tagline">' + esc(shop.tagline) + '</p>' +
-    '<div class="facts"><span>在架 <b>' + live + '</b> 件</span><span>已售出 <b>' + sold + '</b> 件</span><span>轉帳寄貨</span><span>捷運面交（文湖線優先）</span></div>' +
+    '<div class="facts"><span>在架 <b>' + live + '</b> 件</span><span>已售出 <b>' + sold + '</b> 件</span><span>轉帳寄貨</span><span>雙北捷運面交（文湖線、東區優先）</span></div>' +
     '</div><div class="contact"><span class="lbl">想買請加 LINE 私訊</span>' +
     '<div class="row"><span class="lid" id="lid-top">' + esc(shop.lineId) + '</span><button class="btn sm" data-act="copy-id" data-t="#lid-top">複製 ID</button></div>' +
     '<div class="row"><a class="btn sm line-btn" href="' + lineUrl + '" target="_blank" rel="noopener">用 LINE 加好友 ↗</a>' +
@@ -490,13 +509,16 @@ function renderPublic() {
     '<li><span class="n">4</span><div><b>寄出</b><span class="d">收到款項後出貨，並提供寄件編號</span></div></li>' +
     '</ol></div>' +
     '<div class="way"><h3><span class="badge-br">BR</span>捷運面交</h3><p class="sub">' + esc(shop.meetNote) + '</p><ol class="steps">' +
-    '<li><span class="n">1</span><div><b>LINE 私訊商品編號與想約的站</b><span class="d">下面的文湖線站點可以直接點選</span></div></li>' +
+    '<li><span class="n">1</span><div><b>LINE 私訊商品編號與想約的站</b><span class="d">下面的文湖線、東區站點可以直接點選</span></div></li>' +
     '<li><span class="n">2</span><div><b>約時間</b><span class="d">在出站閘門口碰面</span></div></li>' +
     '<li><span class="n">3</span><div><b>看貨付款</b><span class="d">現場確認衣服狀況後付款</span></div></li>' +
     '</ol></div></div>' +
-    '<div class="metro"><div class="metro-h"><h3><span class="badge-br">BR</span>文湖線面交站（優先）</h3><p>點一站，詢問訊息會自動帶入。其他台北市捷運站在詢問清單裡選。</p></div>' +
+    '<div class="metro"><div class="metro-h"><h3>優先面交站</h3><p>點一站，詢問訊息會自動帶入。雙北其他捷運站也都可以約，在詢問清單裡選。</p></div>' +
+    '<p class="metro-sub"><span class="badge-br">BR</span>文湖線</p>' +
     '<div class="strip" role="group" aria-label="文湖線站點">' + stripHtml() + '</div>' +
-    '<div class="metro-legend"><span><i></i>一般站</span><span><i class="tr"></i>可轉乘站</span><span>動物園 ⇄ 南港展覽館，共 24 站</span></div></div>' +
+    '<div class="metro-legend"><span><i></i>一般站</span><span><i class="tr"></i>可轉乘站</span><span>動物園 ⇄ 南港展覽館，共 24 站</span></div>' +
+    '<p class="metro-sub">東區（忠孝／信義一帶）</p>' +
+    '<div class="east" role="group" aria-label="東區站點">' + eastHtml() + '</div></div>' +
     '</section></main>' +
     '<footer class="wrap foot"><span>' + esc(shop.name) + '・LINE ID ' + esc(shop.lineId) + '・更新於 ' + esc(tsLabel(st.publishedAt).slice(0, 10)) + '</span>' +
     (caps.art && (!caps.user || caps.canEdit) ? '<button class="linkish" data-act="admin-open">賣家後台</button>' : '') + '</footer>';
@@ -569,7 +591,7 @@ function renderSheet() {
     '<h2 id="sh-t">私訊我購買</h2>' +
     '<div class="stp"><div class="stp-h"><span class="n">1</span>確認想買的衣服</div>' + list + '</div>' +
     '<div class="stp"><div class="stp-h"><span class="n">2</span>選交易方式</div><div class="methods">' +
-    '<button class="method" data-act="method" data-v="meet" aria-pressed="' + meet + '"><b>捷運面交</b><small>文湖線優先，台北市各站</small></button>' +
+    '<button class="method" data-act="method" data-v="meet" aria-pressed="' + meet + '"><b>捷運面交</b><small>文湖線、東區優先，雙北各站</small></button>' +
     '<button class="method" data-act="method" data-v="ship" aria-pressed="' + !meet + '"><b>轉帳後寄貨</b><small>收款後寄出，運費另計</small></button></div>' +
     (meet ? '<label class="field">面交捷運站<select id="st-sel">' + stationOptions(pref.station) + '</select></label>' +
       '<label class="field">方便的時間<input id="pref-time" type="text" value="' + esc(pref.time) + '" placeholder="例：平日晚上 7 點後、週六下午"></label>'
@@ -1087,8 +1109,8 @@ document.addEventListener('click', function (e) {
     case 'method': pref.method = v; savePref(); renderSheet(); break;
     case 'station':
       pref.station = v; pref.method = 'meet'; savePref();
-      document.querySelectorAll('.stop').forEach(function (s) { var on = s.dataset.v === v; s.classList.toggle('on', on); s.setAttribute('aria-pressed', on); });
-      toast('面交站：' + v.replace('文湖線 ', '') + '，私訊時會自動帶入'); break;
+      document.querySelectorAll('.stop, .echip').forEach(function (s) { var on = s.dataset.v === v; s.classList.toggle('on', on); s.setAttribute('aria-pressed', on); });
+      toast('面交站：' + v.replace(/^\S+線 /, '') + '，私訊時會自動帶入'); break;
     case 'copy-msg': copyText(buildMsg(), t, '#msg'); break;
     case 'copy-id': copyText(view().shop.lineId, t, t.dataset.t); break;
     case 'cat': ui.cat = v; saveUi(); document.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.v === v); }); renderGrid(); break;
@@ -1147,7 +1169,7 @@ document.addEventListener('change', function (e) {
   if (t.id === 'f-size') { ui.size = t.value; saveUi(); renderGrid(); return; }
   if (t.id === 'f-sort') { ui.sort = t.value; saveUi(); renderGrid(); return; }
   if (t.id === 'f-hide') { ui.hideSold = t.checked; saveUi(); renderGrid(); return; }
-  if (t.id === 'st-sel') { pref.station = t.value; savePref(); var m = $('#msg'); if (m) m.textContent = buildMsg(); document.querySelectorAll('.stop').forEach(function (s) { var on = s.dataset.v === t.value; s.classList.toggle('on', on); s.setAttribute('aria-pressed', on); }); return; }
+  if (t.id === 'st-sel') { pref.station = t.value; savePref(); var m = $('#msg'); if (m) m.textContent = buildMsg(); document.querySelectorAll('.stop, .echip').forEach(function (s) { var on = s.dataset.v === t.value; s.classList.toggle('on', on); s.setAttribute('aria-pressed', on); }); return; }
   if (t.id === 'ed-file') { addFiles(t.files); t.value = ''; return; }
   if (t.dataset.status) {
     var it = draft.items.filter(function (x) { return x.id === t.dataset.status; })[0]; if (!it) return;
