@@ -623,7 +623,10 @@ function colorDist(d, i, r, g, b) {
 function computeMask(img, tol, seeds) {
   var w = img.width, h = img.height, d = img.data, n = w * h;
   var bg = new Uint8Array(n), q = new Int32Array(n), head = 0, tail = 0, p, i;
-  for (p = 0; p < n; p++) if (d[p * 4 + 3] < 24) { bg[p] = 1; q[tail++] = p; }
+  var clear = 0;
+  for (p = 0; p < n; p++) if (d[p * 4 + 3] < 24) { bg[p] = 1; q[tail++] = p; clear++; }
+  // an already cut-out PNG (e.g. iPhone "lift subject"): trust its transparency, skip colour guessing
+  var preCut = clear > n * 0.02;
   // background references: cluster the photo border into a few colours (bed sheet, floor, basket...)
   var S = [];
   function sample(px) { var k = px * 4; if (d[k + 3] >= 24) S.push([d[k], d[k + 1], d[k + 2]]); }
@@ -678,10 +681,12 @@ function computeMask(img, tol, seeds) {
       }
     }
   }
-  function seedBorder(px) { if (!bg[px] && nearest(px * 4, refs) < tol) { bg[px] = 1; q[tail++] = px; } }
-  for (x = 0; x < w; x++) { seedBorder(x); seedBorder((h - 1) * w + x); }
-  for (y = 0; y < h; y++) { seedBorder(y * w); seedBorder(y * w + w - 1); }
-  flood(refs);
+  if (preCut) { head = tail; } else {
+    var seedBorder = function (px) { if (!bg[px] && nearest(px * 4, refs) < tol) { bg[px] = 1; q[tail++] = px; } };
+    for (x = 0; x < w; x++) { seedBorder(x); seedBorder((h - 1) * w + x); }
+    for (y = 0; y < h; y++) { seedBorder(y * w); seedBorder(y * w + w - 1); }
+    flood(refs);
+  }
   (seeds || []).forEach(function (s) {
     var sp = s[1] * w + s[0]; if (sp < 0 || sp >= n || bg[sp]) return;
     bg[sp] = 1; q[tail++] = sp; var si = sp * 4; flood([[d[si], d[si + 1], d[si + 2]]]);
@@ -942,7 +947,7 @@ function renderEditor() {
   var opt = function (arr, v) { return arr.map(function (x) { return '<option' + (x === v ? ' selected' : '') + '>' + esc(x) + '</option>'; }).join(''); };
   box.innerHTML = '<div class="ed">' +
     '<div class="panel"><h3>照片（最多 ' + MAX_PHOTOS + ' 張，第一張是封面）</h3>' +
-    (ed.photos.length < MAX_PHOTOS ? '<label class="drop" id="drop"><input id="ed-file" type="file" accept="image/jpeg,image/png,image/webp" multiple><b>點這裡選照片，或把照片拖進來</b><span class="hint">JPG / PNG / WebP。淺色、單色背景拍的衣服去背效果最好。</span></label>' : '') +
+    (ed.photos.length < MAX_PHOTOS ? '<label class="drop" id="drop"><input id="ed-file" type="file" accept="image/jpeg,image/png,image/webp" multiple><b>點這裡選照片，或把照片拖進來</b><span class="hint">JPG / PNG / WebP。衣服平放在單色床單上拍，自動去背效果最好。</span><span class="hint">掛在衣架上、背景雜亂：先用 iPhone 相簿長按衣服→「拷貝」或「分享」去背圖，存成 PNG 再上傳。</span></label>' : '') +
     (ed.photos.length ? '<div class="pthumbs">' + thumbs + '</div>' : '') +
     (cur ? '<div class="stage" id="stage">' + (cur.kind === 'saved' ? '<img src="' + esc(photoSrc(cur.src)) + '" alt="">' : '') + '</div><p class="warnline" id="warnline" hidden></p>' : '') +
     tools + photoActs + '</div>' +
