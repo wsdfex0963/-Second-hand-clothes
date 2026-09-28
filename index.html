@@ -278,13 +278,13 @@ footer.foot{border-top:1px solid var(--line);margin-top:40px;padding-block:20px 
 /* ---------- constants ---------- */
 var RESET = ':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,sans-serif;background:#faf9f7}img{max-width:100%}[hidden]{display:none!important}';
 var FONT_HTML = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">';
-var CATS = ['上衣', '外套', '洋裝', '褲子', '裙子', '配件', '其他'];
+var CATS = ['帽T', '長袖T', '短T', '上衣', '外套', '褲子', '其他'];
 var SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'F'];
 var CONDS = ['全新（含吊牌）', '近全新', '九成新', '八成新', '有使用痕跡'];
 var MEASURES = {
+  '帽T': ['肩寬', '胸寬', '衣長', '袖長'], '長袖T': ['肩寬', '胸寬', '衣長', '袖長'], '短T': ['肩寬', '胸寬', '衣長', '袖長'],
   '上衣': ['肩寬', '胸寬', '衣長', '袖長'], '外套': ['肩寬', '胸寬', '衣長', '袖長'],
-  '洋裝': ['肩寬', '胸寬', '腰寬', '衣長'], '褲子': ['腰寬', '臀寬', '褲長', '褲管寬'],
-  '裙子': ['腰寬', '臀寬', '裙長'], '配件': ['長', '寬', '高'], '其他': ['長', '寬']
+  '褲子': ['腰寬', '臀寬', '褲長', '褲管寬'], '其他': ['長', '寬']
 };
 var STATUS = {
   available: { label: '可購買', cls: 'ok' },
@@ -360,6 +360,7 @@ function findItem(id) { return view().items.filter(function (x) { return x.id ==
 
 var ui = { q: '', cat: '全部', size: '全部', sort: 'new', hideSold: false, open: null, photo: 0, sheet: false };
 Object.assign(ui, ls.get('shop-ui', {}), { q: '', open: null, photo: 0, sheet: false });
+if (ui.cat !== '全部' && CATS.indexOf(ui.cat) < 0) ui.cat = '全部';
 var inquiry = ls.get('shop-inquiry', []);
 var pref = Object.assign({ method: 'meet', station: '', time: '' }, ls.get('shop-pref', {}));
 var admin = { open: false, tab: 'list', changes: {}, ed: null, publishing: false, readOnly: false, msg: '', msgErr: false, confirmDel: null, confirmClear: false, stash: null };
@@ -978,7 +979,7 @@ function renderEditor() {
     tools + photoActs + '</div>' +
     '<div class="panel"><h3>商品資料</h3><div class="fgrid">' +
     '<label class="field full">名稱 *<input type="text" data-f="title" value="' + esc(f.title) + '" placeholder="例：米杏色 V 領針織開襟外套"></label>' +
-    '<label class="field">分類 *<select data-f="cat">' + opt(CATS, f.cat) + '</select></label>' +
+    '<label class="field">分類 *<select data-f="cat">' + opt(CATS.indexOf(f.cat) >= 0 ? CATS : CATS.concat([f.cat]), f.cat) + '</select></label>' +
     '<label class="field">尺寸 *<select data-f="size">' + opt(SIZES, f.size) + '</select></label>' +
     '<label class="field">售價 NT$ *<input type="number" inputmode="numeric" min="0" step="10" data-f="price" value="' + esc(f.price) + '" placeholder="380"></label>' +
     '<label class="field">原價（選填）<input type="number" inputmode="numeric" min="0" step="10" data-f="orig" value="' + esc(f.orig) + '" placeholder="990"></label>' +
